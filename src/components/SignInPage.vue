@@ -1,31 +1,24 @@
 <template>
-     <section id="main">
-        <div>Login Form</div>
-        <div>
-        <span>User Name</span>
-        <input type="text" placeholder="User Name">
-        </div>
+   <section>
+        <section class="forms">
+            <form class="login" v-on:click.prevent="login">
+        <h2>Sign Up Form</h2>
 
-        <!-- email -->
+        <div class="input">
+        <label for="userName">User Name</label>
+        <input type="text" placeholder="User Name" id="userName" class="char">
 
-        <div>
-        <span>User Id</span>
-        <input type="email" placeholder="user Id">
-        </div>
+        <label for="email">User Id</label>
+        <input type="email" placeholder="email Id" class="char" id="email">
+    
         <!-- password -->
-        <div>
-        <span>Password</span>
-        <input type="password" placeholder="Password">
+        <label for="password">Password</label>
+        <input type="password" placeholder="password" class="char" id="password">
+        <input type="submit" value="Sign In" id="button"/>
         </div>
 
-        <div>
-        <span>Conform Password</span>
-        <input type="password" placeholder="Password">
-        </div>
-        <div>
-            <button>Sign In</button>
-        </div>
-       
+    </form>
+      </section>
     </section>
 </template>
 
@@ -36,10 +29,91 @@ export default {
 </script>
 
 <style scoped>
-#main{
+
+
+.input{
     display: flex;
-    flex-direction: column;
-    justify-items: flex-start;
+flex-direction: column;
+align-items: flex-start;
 }
+
+section{
+/* align-items: center; */
+margin-left: 250%;
+margin-top: 50%;
+}
+
+h2{
+
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 700;
+font-size: 20px;
+line-height: 24px;
+
+/* black/solid/600 */
+
+color: #232A29;
+
+}
+
+.forms {
+width: 196px;
+height: 493px;
+background-color: #FFFFFF;
+border-radius: 24px;
+margin-top: 200%;
+}
+
+.char{
+width: 340px;
+height: 64px;
+background: rgba(54, 65, 64, 0.04);
+border: 2px solid rgba(54, 65, 64, 0.16);
+box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
+border-radius: 12px;
+margin-top: 6px;
+margin-bottom: 8px;
+}
+
+#button{
+width: 340px;
+height: 64px;
+background: linear-gradient(88.84deg, #00AC99 0%, #00E0B0 100%);
+box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.08);
+border-radius: 12px;
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 900;
+font-size: 16px;
+line-height: 20px;
+text-align: center;
+color: #FFFFFF;
+margin-top: 12px;
+}
+
+.login{
+text-align: center;
+width: 396px;
+height: 493px;
+border: 2px solid ;
+padding-top: 60px;
+border-radius: 24px;
+background-color: #FFFFFF;
+
+}
+
+
+label{
+
+
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 500;
+font-size: 12px;
+line-height: 15px;
+color: rgba(54, 65, 64, 0.64);
+}
+
 
 </style>

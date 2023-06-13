@@ -2,7 +2,7 @@
     <div class="popup">
         <div class="innerPop">
             <LoginPage></LoginPage>
-            <button class="close" v-on:click="TogglePopup()">X</button>
+            <button class="close" v-on:click="ToggleLoginPopup()">X</button>
         </div>
     </div>
 </template>
@@ -14,7 +14,7 @@ export default {
     components:{
         LoginPage
     },
-    props:['TogglePopup']
+    props:['ToggleLoginPopup']
 }
 </script>
 
@@ -39,13 +39,14 @@ export default {
     }
     
     .close{
-    background-color:rgba(54, 65, 64, 0.04);
+    background-color:rgba(222, 80, 113, 0.04);
     height: 30px;
     border-radius: 50%;
-    margin-top: 414px;
+    /* margin-top: 414px; */
     margin-left: 210px;
     padding-right: 6px;
-    padding-left: 6px;
+    /* padding-left: 6px; */
+    padding-left: 325%;
     }
 
 </style>

@@ -3,61 +3,70 @@
 
 <section id="nav">
   <div id="left"><img src="../assets/Tampa_Bay_Buccaneers_logo_red.png" alt=""></div>
+  <router-link to="/" class="link">Home</router-link>
+  <router-link to="/about" class="link">About</router-link>
   <div id="right">
     <div id="lp">
-      <span v-on:click="()=>TogglePopup('buttonTrigger')">Login In</span>
+      <span v-on:click="()=>ToggleLoginPopup('LoginTrigger')">Login</span>
     </div>
     <div id="sp">
-      <span>Sign In</span>
+      <span v-on:click="()=>ToggleSignInPopup('buttonTrigger')">Sign In</span>
     </div>
   </div>
 </section>
 
-<LoginPage></LoginPage>
-<br>
-<br>
-<SignInPage></SignInPage>
 
-<h1></h1>
-
-
-<Pop v-if="popupTriggers.buttonTrigger" :TogglePopup="
-()=>TogglePopup('buttonTrigger')">
+<LoginPop v-if="popupTriggers.LoginTrigger" :ToggleLoginPopup="
+()=>ToggleLoginPopup('LoginTrigger')">
 <Login></Login>
-</Pop>
+</LoginPop>
+
+<SignInPop v-if="popupTriggers.buttonTrigger" :ToggleSignInPopup="
+()=>ToggleSignInPopup('buttonTrigger')">
+<SignIn></SignIn>
+</SignInPop>
 
 
 </section>
+
+<router-view></router-view>
 </template>
 
 <script>
-import LoginPage from './LoginPage.vue';
-import SignInPage from './SignInPage.vue';
-import Pop from './PopUp.vue'
+import LoginPop from './LoginPop.vue'
 import {ref} from 'vue'
+import SignInPop from './SignInPop.vue';
+// import SignInPage from './SignInPage.vue';
 
 export default {
   
   name: `HomePage`,
   data(){
     const popupTriggers=ref({
-      buttonTrigger:false
+      LoginTrigger:false
     });
 
-    const TogglePopup=(trigger)=>{
+    const ToggleLoginPopup=(trigger)=>{
       popupTriggers.value[trigger] =! popupTriggers.value[trigger]
     };
+
+    const ToggleSignInPopup=(trigger)=>{
+      popupTriggers.value[trigger] =! popupTriggers.value[trigger]
+    };
+
     return{
-      Pop,
+      LoginPop,
       popupTriggers,
-      TogglePopup
+      ToggleLoginPopup,
+      ToggleSignInPopup,
+      SignInPop
     }
   },
   components:{
-    LoginPage,
-    SignInPage,
-    Pop
-  },
+    LoginPop,
+    SignInPop,
+    // SignInPage
+},
   props: {
   }
 }
@@ -66,16 +75,21 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 
+.link{
+ color : aliceblue;
+}
+
 #home{
   background-image: url("../assets/backGround.png");
-  /* background-size:; */
   background-repeat: no-repeat;
+  background-size: cover;
 }
 
 #nav{
   background-color:black;
   display: flex;
   justify-content: space-between;
+  
 }
 
 #left img{
