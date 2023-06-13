@@ -21,5 +21,6 @@ export default {
   background-image: url("../assets/backGround.png");
   background-repeat: no-repeat;
   background-size: cover;
+  height: 1080px;
 }
 </style>

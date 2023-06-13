@@ -1,10 +1,11 @@
 <template>
-<section  id="home">
+<section  id="bghome">
 
 <section id="nav">
-  <div id="left"><img src="../assets/Tampa_Bay_Buccaneers_logo_red.png" alt=""></div>
+  <div id="left"><img src="../assets/Tampa_Bay_Buccaneers_logo_red.png" alt="">
   <router-link to="/" class="link">Home</router-link>
   <router-link to="/about" class="link">About</router-link>
+</div>
   <div id="right">
     <div id="lp">
       <span v-on:click="()=>ToggleLoginPopup('LoginTrigger')">Login</span>
@@ -28,6 +29,8 @@
 
 
 </section>
+
+<!-- <section class="bgHome"></section> -->
 
 <router-view></router-view>
 </template>
@@ -78,12 +81,13 @@ export default {
 .link{
  color : aliceblue;
 }
-
-#home{
+/* 
+#bghome{
   background-image: url("../assets/backGround.png");
   background-repeat: no-repeat;
   background-size: cover;
-}
+  height: 1080px;
+} */
 
 #nav{
   background-color:black;
@@ -98,6 +102,10 @@ export default {
   margin-left:30px ;
 }
 
+#left{
+  display: flex;
+}
+
 #right{
   display: flex;
   gap: 5px;
@@ -110,6 +118,14 @@ export default {
 }
 
 #sp{
+  padding: 12px;
+  border:2px solid;
+  margin-left:30px ;
+  margin-right:30px ;
+  border-radius: 30%;
+}
+
+.link{
   padding: 12px;
   border:2px solid;
   margin-left:30px ;
