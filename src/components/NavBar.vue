@@ -40,7 +40,7 @@ import SignInPop from './SignInPop.vue';
 
 export default {
   
-  name: `HomePage`,
+  name: `NavBar`,
   data(){
     const popupTriggers=ref({
       LoginTrigger:false
