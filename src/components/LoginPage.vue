@@ -1,16 +1,20 @@
 <template>
     <section>
         <section class="forms">
-            <form class="login" v-on:click.prevent="login">
+            <form class="login" @submit.prevent="login">
         <h2>Login Form</h2>
 
         <div>
-        <label for="email">User Id</label>
-        <input type="email" placeholder="email Id" class="char" id="email">
+        <label for="uername">User Name</label>
+        <input type="Text" placeholder="User Name" class="char" id="uername" v-model="username">
     
         <!-- password -->
         <label for="password">Password</label>
-        <input type="password" placeholder="password" class="char" id="password">
+        <input type="password" placeholder="password" class="char" id="password" v-model="password">
+
+        <!-- role
+        <label for="role">Role</label>
+        <input type="text" placeholder="Role" class="char" id="role" v-model="role"> -->
         <input type="submit" value="Log In" id="button"/>
         </div>
 
@@ -20,8 +24,26 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 export default {
-    name:`LoginPage`
+    name:`LoginPage`,
+    data(){
+        return{
+            username:"",
+            password:"",
+            // role:""
+        }
+    },
+    methods:{
+        ...mapActions(["loginUser"]),
+        login(){
+            this.loginUser({
+                username:this.username,
+                password:this.password,
+                // role:this.role
+            })
+        }
+    }
 }
 </script>
 
@@ -88,7 +110,7 @@ margin-top: 12px;
 text-align: center;
 width: 396px;
 height: 493px;
-border: 2px solid ;
+border: 13px solid;
 padding-top: 60px;
 border-radius: 24px;
 background-color: #FFFFFF;

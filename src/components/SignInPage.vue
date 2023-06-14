@@ -1,19 +1,21 @@
 <template>
    <section>
         <section class="forms">
-            <form class="login" v-on:click.prevent="login">
+            <form class="login" @submit.prevent="signIn">
         <h2>Sign Up Form</h2>
 
         <div class="input">
-        <label for="userName">User Name</label>
-        <input type="text" placeholder="User Name" id="userName" class="char">
+        <label for="username" >User Name</label>
+        <input v-model="username" type="text" placeholder="User Name" id="username" class="char" >
 
-        <label for="email">User Id</label>
-        <input type="email" placeholder="email Id" class="char" id="email">
-    
         <!-- password -->
         <label for="password">Password</label>
-        <input type="password" placeholder="password" class="char" id="password">
+        <input v-model="password" type="password" placeholder="password" class="char" id="password">
+
+        <label for="role">Role</label>
+        <input  v-model="role" type="text" placeholder="Role" class="char" id="role">
+    
+
         <input type="submit" value="Sign In" id="button"/>
         </div>
 
@@ -23,8 +25,29 @@
 </template>
 
 <script>
+
+import {mapActions} from 'vuex'
 export default {
-    name:`SignInPage`
+    name:`SignInPage`,
+    data(){
+        return{
+            username:"",
+            password:"",
+            role:""
+        }
+    },
+    methods:{
+        ...mapActions(["addUser"]),
+        signIn(){
+            this.addUser({
+                username : this.username,
+                password : this.password,
+                role: this.role,
+            })
+            console.warn("hi",this.username);
+        },
+
+    }
 }
 </script>
 
