@@ -5,6 +5,7 @@
   <div id="left"><img src="../assets/Tampa_Bay_Buccaneers_logo_red.png" alt="">
   <router-link to="/" class="link">Home</router-link>
   <router-link to="/about" class="link">About</router-link>
+  <router-link to="/poll" class ="link">Poll</router-link>
 </div>
   <div id="right">
     <div id="lp">

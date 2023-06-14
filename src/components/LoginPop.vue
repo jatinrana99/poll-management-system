@@ -5,6 +5,10 @@
             <button class="close" v-on:click="ToggleLoginPopup()">X</button>
         </div>
     </div>
+
+
+    
+
 </template>
 
 <script>
