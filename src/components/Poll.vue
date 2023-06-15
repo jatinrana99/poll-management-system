@@ -5,11 +5,13 @@
     </v-btn> -->
 
 <MainPollCard></MainPollCard>
+<PollCards></PollCards>
 </section>
 </template>
 
 <script>
 import MainPollCard from './MainPollCard.vue'
+import PollCards from './PollCards.vue'
 
 export default {
     name:`Poll`,
@@ -19,7 +21,8 @@ export default {
         }
     },
     components:{
-        MainPollCard
+        MainPollCard,
+        PollCards
     }
 }
 </script>

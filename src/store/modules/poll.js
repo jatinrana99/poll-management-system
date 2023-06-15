@@ -14,7 +14,6 @@ const actions={
         console.warn("Hello from poll title3",pollDetails.options[2]);
         
 
-
     }
 
 };
