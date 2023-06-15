@@ -1,5 +1,6 @@
 import { createStore } from 'vuex'
 import user from './modules/user'
+import poll from './modules/poll'
 
 export default createStore({
   // state: {
@@ -12,6 +13,7 @@ export default createStore({
   // actions: {
   // },
   modules: {
-    user
+    user,
+    poll
   }
 })
