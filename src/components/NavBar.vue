@@ -8,87 +8,80 @@
   <router-link to="/poll" class ="link">Poll</router-link>
 </div>
   <div id="right">
-    <div id="lp">
-      <span v-on:click="()=>ToggleLoginPopup('LoginTrigger')">Login</span>
-    </div>
-    <div id="sp">
-      <span v-on:click="()=>ToggleSignInPopup('buttonTrigger')">Sign In</span>
-    </div>
+  
+<!-- for login in form -->
+
+      <v-dialog
+        transition="dialog-bottom-transition"
+        width="auto"
+      >
+        <template v-slot:activator="{ props }">
+     
+          <v-btn variant="text"
+          v-bind="props">
+          Login
+       </v-btn>
+        </template>
+        <template v-slot:default="{ isActive }">
+          <v-card>
+    <LoginPage @click="isActive.value = true"></LoginPage>
+          </v-card>
+        </template>
+      </v-dialog>
+
+<!-- for sign in form -->
+      
+      <v-dialog
+        transition="dialog-bottom-transition"
+        width="auto"
+      >
+        <template v-slot:activator="{ props }">
+          <v-btn variant="text"
+          v-bind="props">
+          Sign In
+       </v-btn>
+        </template>
+        <template v-slot:default="{ isActive }">
+          <v-card>
+    <SignInPage @click="isActive.value = true"></SignInPage>
+          </v-card>
+        </template>
+      </v-dialog>
+
   </div>
 </section>
 
-
-<LoginPop v-if="popupTriggers.LoginTrigger" :ToggleLoginPopup="
-()=>ToggleLoginPopup('LoginTrigger')">
-<Login></Login>
-</LoginPop>
-
-<SignInPop v-if="popupTriggers.buttonTrigger" :ToggleSignInPopup="
-()=>ToggleSignInPopup('buttonTrigger')">
-<SignIn></SignIn>
-</SignInPop>
-
-
 </section>
 
-<!-- <section class="bgHome"></section> -->
 
 <router-view></router-view>
 </template>
 
 <script>
-import LoginPop from './LoginPop.vue'
-import {ref} from 'vue'
-import SignInPop from './SignInPop.vue';
-// import SignInPage from './SignInPage.vue';
+import LoginPage from './LoginPage.vue';
+import SignInPage from './SignInPage.vue';
 
 export default {
   
   name: `NavBar`,
   data(){
-    const popupTriggers=ref({
-      LoginTrigger:false
-    });
-
-    const ToggleLoginPopup=(trigger)=>{
-      popupTriggers.value[trigger] =! popupTriggers.value[trigger]
-    };
-
-    const ToggleSignInPopup=(trigger)=>{
-      popupTriggers.value[trigger] =! popupTriggers.value[trigger]
-    };
-
     return{
-      LoginPop,
-      popupTriggers,
-      ToggleLoginPopup,
-      ToggleSignInPopup,
-      SignInPop
     }
   },
   components:{
-    LoginPop,
-    SignInPop,
-    // SignInPage
+    LoginPage,
+    SignInPage
 },
   props: {
   }
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 
 .link{
  color : aliceblue;
 }
-/* 
-#bghome{
-  background-image: url("../assets/backGround.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 1080px;
-} */
 
 #nav{
   background-color:black;
@@ -109,26 +102,14 @@ export default {
 
 #right{
   display: flex;
-  gap: 5px;
-}
-
-#lp{
-  padding: 12px;
-  border: 2px solid;
-  border-radius: 30%;
-}
-
-#sp{
-  padding: 12px;
-  border:2px solid;
-  margin-left:30px ;
-  margin-right:30px ;
-  border-radius: 30%;
+  gap: 34px;
+margin-top: 8px;
+margin-right: 34px;
 }
 
 .link{
   padding: 12px;
-  border:2px solid;
+  /* border:2px solid; */
   margin-left:30px ;
   margin-right:30px ;
   border-radius: 30%;

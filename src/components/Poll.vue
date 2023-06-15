@@ -1,11 +1,12 @@
 <template>
-    <h2>Create Your Own Poll</h2>
-    <PollCard></PollCard>
-    <PollCard></PollCard>
+
+    <v-btn>
+  Create a new Poll
+    </v-btn>
 </template>
 
 <script>
-import PollCard from './PollCard.vue'
+// import PollCard from './PollCard.vue'
 
 export default {
     name:`Poll`,
@@ -15,7 +16,7 @@ export default {
         }
     },
     components:{
-        PollCard
+        // PollCard
     }
 }
 </script>
