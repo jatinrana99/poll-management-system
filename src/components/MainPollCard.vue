@@ -36,9 +36,11 @@
           <v-btn color="blue-darken-1" variant="text" @click="dialog = false">
             Close
           </v-btn>
-          <v-btn color="blue-darken-1" variant="text" @click="dialog = false;addNewPoll()" >
+          <router-link to="/poll">
+          <v-btn color="blue-darken-1" variant="text" @click="dialog = false;addNewPoll() ; getPoll()" >
             Add
           </v-btn>
+        </router-link>
         </v-card-actions>
       </v-card>
 
@@ -65,17 +67,21 @@ export default {
         this.options.push(this.option);
         this.option = "";
       },
-      ...mapActions(['addPoll']),
+      ...mapActions(['addPoll','getAllPoll']),
       addNewPoll(){
-        this.addPoll({
+        // this.addPoll({
           
-          title:this.title,
-          options:this.options,
+          // title:this.title,
+          // options:this.options,
           
-        })
+        // })
         console.log("Hello from title",this.addPoll.title);
         console.warn("Hello from options",this.addPoll.options);
        
+      },
+
+      getPoll(){
+        this.getAllPoll();
       }
     }
 }

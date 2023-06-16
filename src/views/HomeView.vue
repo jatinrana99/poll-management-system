@@ -1,6 +1,7 @@
 <template>
     <!-- <HomePage/> -->
     <div id="home">Home page code except nav bar</div>
+    <PollCards></PollCards>
 
     <!-- <section>
       <h2></h2>
@@ -16,12 +17,14 @@
 
 // import LoginPage from '@/components/LoginPage.vue';
 // import SignInPage from '@/components/SignInPage.vue';
+import PollCards from '../components/PollCards.vue'
 
 export default {
   name: 'HomeView',
   components: {
     // LoginPage,
     // SignInPage
+    PollCards
 }
 }
 </script>
