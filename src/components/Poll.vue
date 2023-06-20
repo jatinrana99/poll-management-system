@@ -28,12 +28,12 @@ export default {
 </script>
 
 <style scoped>
-#home{
+/* .home{
   background-image: url("../assets/HD-Wallpapers1_FOSmVKg.jpeg");
   background-repeat: no-repeat;
   background-size: cover;
   height: 960px;
-}
+} */
 
 
 h2{

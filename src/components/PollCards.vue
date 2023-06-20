@@ -16,14 +16,23 @@
 <v-radio-group>
 
   
-  <v-radio class="bradio" v-for="(opt , index) in data.options" :key="index">
-    {{ opt.option }} {{ data._id }}<br><br>
+  <v-radio :label=" opt.option " class="bradio" v-for="(opt , index) in data.options" :key="index">
+    <!-- {{ opt.option }} {{ data._id }}<br><br> -->
     <i class="fa-solid fa-trash-can"  @click="deleteOption(data._id,opt.option)"></i> 
   </v-radio>
 </v-radio-group>
 
+<div class="edit"  v-if="editOption==(data._id)">
+      <v-text-field
+      
+        v-model="newOption"
+      ></v-text-field>
+      <i class="fa-solid fa-square-plus" v-on:click="nayaOption(newOption,data._id)"></i>
+      </div>
+
+<v-btn block class="mt-2" @click="toggleEdit(data._id)">Add Poll Option</v-btn>
       <v-btn block class="mt-2" @click="deletePoll(data._id)">Delete Poll</v-btn>
-      <v-btn block class="mt-2" @click="addPollOption(data._id)">Add Poll Option</v-btn>
+     
     
     </v-form>
   <!-- </v-sheet> -->
@@ -41,12 +50,11 @@ export default {
     data(){
       // const showFirst= ref(true);
 
-      // const toggle =  (index) => {
-      //   // console.log(index);
+      // const toggleEdit =  () => {
       //   this.editIndex=index;
       //   // if(this.editIndex==index){
 
-      //     // this.showFirst =!this.showFirst;
+          // this.showFirst =!this.showFirst;
       //   // }
       //   // if(index==)
       //   // this.editIndex = index;
@@ -59,15 +67,17 @@ export default {
             // editDetails:[],
             // showFirst,
             title:"",
-            // toggle,
+            // toggleEdit,
             editIndex:-1,
-            // showFirst:true
+            showFirst:false,
+            editOption:-1
+          
         }
     },
     computed: mapGetters(['getPoll']),
 
     methods:{
-        ...mapActions(['getAllPoll', 'deletePoll','updateTitle','deletePollOption']),
+        ...mapActions(['getAllPoll', 'deletePoll','updateTitle','deletePollOption','addPollOption']),
       
       nayaTitle(newTitle,id){
         this.id=id;
@@ -97,21 +107,46 @@ export default {
         // }
       },
 
+      toggleEdit(id){
+        this.id=id;
+        console.log(this.id , "Please");
+        this.editOption=id;
+        console.log(this.editOption,"Please2");
+      },
+
+
       deleteOption(id , text){
         this.id=id;
         this.text=text;
-        console.log(this.id,"Option");
-        console.log(this.text,"option text");
+        // console.log(this.id,"Option");
+        // console.log(this.text,"option text");
 
         let delObj={
           id : this.id,
           text : this.text,
         }
-        console.log(delObj ,"data in delete object");
+        // console.log(delObj ,"data in delete object");
 
         this.deletePollOption({
           delObj
         })
+      },
+
+      nayaOption(newOption,id){
+        this.id=id;
+        this.newOption = newOption;
+        console.log(this.id ,"add new option ID");
+        console.log(this.newOption ,"data in naya option");
+
+        let addObj ={
+          newOption:this.newOption,
+          id:this.id
+        }
+
+        this.addPollOption({
+          addObj
+        })
+                
       }
 
         
@@ -129,11 +164,17 @@ export default {
 margin-bottom: 69px;
 padding: 42px;
 color: black;
+border-bottom-right-radius: 16px;
+border-top-left-radius: 106px;
 }
 
 .bradio{
   border: 2px solid black;
   margin: 6px;
   padding: 20px;
+}
+
+.edit{
+  display: flex;
 }
 </style>

@@ -1,5 +1,6 @@
 import axios from "axios"
 
+
 const state ={
     poll:[]
 };
@@ -39,11 +40,19 @@ const actions={
     },
 
     async deletePollOption({commit},delObj){
-        console.log("deleteId in API" , delObj.delObj.id);
-        console.log("deleteText in API", delObj.delObj.text);
-        console.log(`http://65.108.77.50:3031/delete_poll_option?id=${delObj.delObj.id}&option_text=${delObj.delObj.text}`)
+        // console.log("deleteId in API" , delObj.delObj.id);
+        // console.log("deleteText in API", delObj.delObj.text);
+        // console.log(`http://65.108.77.50:3031/delete_poll_option?id=${delObj.delObj.id}&option_text=${delObj.delObj.text}`)
         let res= await axios.delete(`http://65.108.77.50:3031/delete_poll_option?id=${delObj.delObj.id}&option_text=${delObj.delObj.text}`);
         commit(("removePollOption"),res.data);
+    },
+
+    async addPollOption({commit}, addObj){
+        console.log("addPollOption ID", addObj.addObj.id);
+        console.log("addPollOption Text", addObj.addObj.newOption);
+        console.log(`http://65.108.77.50:3031/add_new_option?id=${addObj.addObj.id}&option_text=${addObj.addObj.newOption}`);
+        let res = await axios.post(`http://65.108.77.50:3031/add_new_option?id=${addObj.addObj.id}&option_text=${addObj.addObj.newOption}`);
+        commit("newPollOption",res.data);
     }
 };
 const mutations={
