@@ -1,25 +1,28 @@
 <template>
-    <div>Hello from Poll cards</div>
+    <!-- <div>Hello from Poll cards</div> -->
   <!-- <v-sheet width="500" class="mx-auto" > -->
     <v-form fast-fail v-for="(data,index ) in getPoll" v-bind:key="index" class="form">
         <v-row>
-    <div  @click="toggle(index)" >{{ data.title }}</div>
+          <section id="title" >    
+            <div  @click="toggle(index)">{{ data.title }}</div>
       <v-text-field
       v-if="editIndex==index"
         v-model="newTitle"
       ></v-text-field>
-
-    <v-btn >
-      <i class="fa-solid fa-pen-to-square" v-on:click="nayaTitle(newTitle,data._id)" ></i>
-    </v-btn>
-      </v-row>
+      
+      <v-btn >
+        <i class="fa-solid fa-pen-to-square" v-on:click="nayaTitle(newTitle,data._id)" ></i>
+      </v-btn>
+    </section>
+    </v-row>
 <v-radio-group>
 
-  
-  <v-radio :label=" opt.option " class="bradio" v-for="(opt , index) in data.options" :key="index">
+  <div>
+    <v-radio :label=" opt.option " class="bradio" v-for="(opt , index) in data.options" :key="index">
+      <i class="fa-solid fa-trash-can"  @click="deleteOption(data._id,opt.option)"></i> 
     <!-- {{ opt.option }} {{ data._id }}<br><br> -->
-    <i class="fa-solid fa-trash-can"  @click="deleteOption(data._id,opt.option)"></i> 
   </v-radio>
+</div>
 </v-radio-group>
 
 <div class="edit"  v-if="editOption==(data._id)">
@@ -75,6 +78,7 @@ export default {
         }
     },
     computed: mapGetters(['getPoll']),
+  
 
     methods:{
         ...mapActions(['getAllPoll', 'deletePoll','updateTitle','deletePollOption','addPollOption']),
@@ -147,25 +151,31 @@ export default {
           addObj
         })
                 
-      }
-
-        
+      },
            
 
         
     },
+    
+    // created(){
+    //     this.getAllPoll();
+    // },
+    updated(){
+      this.getAllPoll();      
+    }
 }
 </script>
 
 
 <style scoped>
 .form{
-  border: 6px solid;
+border: 6px solid;
 margin-bottom: 69px;
 padding: 42px;
 color: black;
 border-bottom-right-radius: 16px;
 border-top-left-radius: 106px;
+background-color: cadetblue;
 }
 
 .bradio{
@@ -176,5 +186,21 @@ border-top-left-radius: 106px;
 
 .edit{
   display: flex;
+}
+
+#title{
+display: flex;
+align-items: center;
+gap: 120px;
+padding: 29px;
+margin-left: 330px;
+}
+
+
+#title div{
+  border: 2px solid;
+  padding: 15px;
+  border-bottom-right-radius: 16px;
+border-top-left-radius: 106px;
 }
 </style>

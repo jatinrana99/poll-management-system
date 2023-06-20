@@ -24,12 +24,12 @@ const actions={
         // console.log("Hello from api Poll" , res.data);
         // console.warn("Hello from api Poll Title" , res.data.data._id);
     },
-
+    
     async deletePoll({commit},id){
         let res=await axios.delete(`http://65.108.77.50:3031/delete_poll?id=${id}`);
         commit("removePoll" ,res.data);
     },
-
+    
     async updateTitle({commit},obj){
         // console.log(obj.obj.newTitle,"hello from api Poll")
         // console.log(`http://65.108.77.50:3031/update_poll_title?id=${obj.obj.id}&title=${obj.obj.newTitle}`)
@@ -38,7 +38,7 @@ const actions={
         let res= await axios.post(`http://65.108.77.50:3031/update_poll_title?id=${obj.obj.id}&title=${obj.obj.newTitle}`);
         commit(("setTitle"),res.data);
     },
-
+    
     async deletePollOption({commit},delObj){
         // console.log("deleteId in API" , delObj.delObj.id);
         // console.log("deleteText in API", delObj.delObj.text);
@@ -46,7 +46,7 @@ const actions={
         let res= await axios.delete(`http://65.108.77.50:3031/delete_poll_option?id=${delObj.delObj.id}&option_text=${delObj.delObj.text}`);
         commit(("removePollOption"),res.data);
     },
-
+    
     async addPollOption({commit}, addObj){
         console.log("addPollOption ID", addObj.addObj.id);
         console.log("addPollOption Text", addObj.addObj.newOption);

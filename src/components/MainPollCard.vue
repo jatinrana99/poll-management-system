@@ -71,8 +71,8 @@ export default {
       addNewPoll(){
         // this.addPoll({
           
-          // title:this.title,
-          // options:this.options,
+        //   title:this.title,
+        //   options:this.options,
           
         // })
         console.log("Hello from title",this.addPoll.title);
