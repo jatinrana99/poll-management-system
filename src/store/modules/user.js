@@ -1,5 +1,5 @@
 import axios from "axios"
-
+import router from "../../router";
 const state={
     users:[],
 
@@ -23,11 +23,16 @@ const actions={
         console.warn("Hello from added user" , res.data);
     },
 
-    async loginUser(context,loginDetails){
+    async loginUser({commit},loginDetails){
         const res = await axios.post(`http://65.108.77.50:3031/login?username=${loginDetails.username}&password=${loginDetails.password}`);
-        context.commit("userLogin" , res.data);
-        console.warn("Hello from login", res.data);
-    }
+        // const rest = res.data
+        commit("userLogin" , res.data);
+        console.log("Hello from login", res.data.token);
+        localStorage.setItem("status",res.data.data.token);
+        router.push('/poll')
+    },
+
+
 };
 const mutations={
     setUsers:(state,users) => (state.users = users),

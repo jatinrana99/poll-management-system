@@ -53,7 +53,8 @@ const actions={
         console.log(`http://65.108.77.50:3031/add_new_option?id=${addObj.addObj.id}&option_text=${addObj.addObj.newOption}`);
         let res = await axios.post(`http://65.108.77.50:3031/add_new_option?id=${addObj.addObj.id}&option_text=${addObj.addObj.newOption}`);
         commit("newPollOption",res.data);
-    }
+    },
+
 };
 const mutations={
     add_poll:(state,poll) => state.poll.push(poll),

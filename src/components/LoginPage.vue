@@ -11,9 +11,9 @@
           label="password"
         ></v-text-field>
         <!-- <v-btn type="submit" block class="mt-2">Log In</v-btn> -->
-        <router-link to="/poll">
-            <v-btn type="submit" block class="mt-2">Log In</v-btn>
-        </router-link>
+        <!-- <router-link >
+        </router-link> -->
+        <v-btn type="submit" block class="mt-2">Log In</v-btn>
       </v-form>
     </v-sheet>
   </template>

@@ -73,7 +73,7 @@ export default {
     SignInPage
 },
   props: {
-  }
+  },
 }
 </script>
 
