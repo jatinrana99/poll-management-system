@@ -173,8 +173,8 @@ border: 6px solid;
 margin-bottom: 69px;
 padding: 42px;
 color: black;
-border-bottom-right-radius: 16px;
-border-top-left-radius: 106px;
+border-radius: 16px;
+/* border-top-left-radius: 106px; */
 background-color: cadetblue;
 }
 
@@ -200,7 +200,7 @@ margin-left: 330px;
 #title div{
   border: 2px solid;
   padding: 15px;
-  border-bottom-right-radius: 16px;
-border-top-left-radius: 106px;
+  border-radius: 16px;
+/* border-top-left-radius: 106px; */
 }
 </style>

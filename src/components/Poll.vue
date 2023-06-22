@@ -9,6 +9,7 @@
     </v-btn>
 <MainPollCard></MainPollCard>
 <PollCards></PollCards>
+<!-- <Users></Users> -->
 </section>
 </section>
 </template>
@@ -16,6 +17,7 @@
 <script>
 import MainPollCard from './MainPollCard.vue'
 import PollCards from './PollCards.vue'
+// import Users from './Users.vue'
 import router from "../router/index";
 
 export default {
@@ -27,7 +29,8 @@ export default {
     },
     components:{
         MainPollCard,
-        PollCards
+        PollCards,
+        // Users
     },
 
     methods:{

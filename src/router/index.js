@@ -113,8 +113,13 @@ const routes = [
     // //     // return res
     // // }
     // }
+  },
+  {
+  path:'/pollUser',
+  name: 'Users',
+  component: () => import('../components/Users'),
+  meta: {auth:true}
   }
-
 ]
 
 const router = createRouter({

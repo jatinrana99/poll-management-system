@@ -29,7 +29,13 @@ const actions={
         commit("userLogin" , res.data);
         console.log("Hello from login", res.data.token);
         localStorage.setItem("status",res.data.token);
-        router.push('/poll')
+        // router.push('/poll');
+        if(loginDetails.username=="admin" && loginDetails.password=="admin"){
+            router.push('/poll');
+        }
+        else{
+            router.push('/pollUser');
+        }
     },
 
 
