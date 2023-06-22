@@ -28,7 +28,7 @@ const actions={
         // const rest = res.data
         commit("userLogin" , res.data);
         console.log("Hello from login", res.data.token);
-        localStorage.setItem("status",res.data.data.token);
+        localStorage.setItem("status",res.data.token);
         router.push('/poll')
     },
 
