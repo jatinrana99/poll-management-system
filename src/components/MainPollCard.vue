@@ -37,7 +37,7 @@
             Close
           </v-btn>
           <router-link to="/poll">
-          <v-btn color="blue-darken-1" variant="text" @click="dialog = false;addNewPoll() ; getPoll()" >
+          <v-btn color="blue-darken-1" variant="text" @click="dialog = false;addNewPoll() " >
             Add
           </v-btn>
         </router-link>
@@ -46,14 +46,21 @@
 
     </v-dialog>
   </v-row>
+
+  <!-- <PollCards></PollCards> -->
 </template>
 
 
 
 <script>
 import { mapActions } from 'vuex';
+// import PollCards from './PollCards.vue'
+
 export default {
     name:`MainPollCard`,
+    // components:{
+    //   PollCards
+    // },
     data(){
       return {
         dialog: false,
@@ -80,9 +87,9 @@ export default {
        
       },
 
-      getPoll(){
-        this.getAllPoll();
-      }
+      // getPoll(){
+      //   this.getAllPoll();
+      // }
     }
 }
 

@@ -6,9 +6,9 @@
   <router-link to="/" class="link">Home</router-link>
   <router-link to="/about" class="link">About</router-link>
   <router-link to="/poll" class ="link">Poll</router-link>
-  <v-btn class="bPoll" v-bind="props"  v-on:click="logOut()">
+  <!-- <v-btn class="bPoll" v-bind="props"  v-on:click="logOut()">
   LogOut
-    </v-btn>
+    </v-btn> -->
 </div>
   <div id="right">
   
@@ -64,7 +64,7 @@
 <script>
 import LoginPage from './LoginPage.vue';
 import SignInPage from './SignInPage.vue';
-import router from "../router/index";
+// import router from "../router/index";
 
 export default {
   
@@ -82,24 +82,11 @@ export default {
 
 
   methods:{
-    removeComponentFromNavBar (navBar, componentName) {
-  let index = -1
-  for (let i = 0; i < navBar.length; i++) {
-    if (navBar[i].name === componentName) {
-      index = i
-      break
-    }
-  }
-
-  if (index !== -1) {
-    navBar.splice(index, 1)
-  }
-},
-
-logOut(){
-            localStorage.removeItem("status")
-            router.push('/')
-        }
+  
+// logOut(){
+//             localStorage.removeItem("status")
+//             router.push('/')
+//         }
   }
 }
 </script>

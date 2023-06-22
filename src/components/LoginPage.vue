@@ -13,7 +13,7 @@
         <!-- <v-btn type="submit" block class="mt-2">Log In</v-btn> -->
         <!-- <router-link >
         </router-link> -->
-        <v-btn type="submit" block class="mt-2">Log In</v-btn>
+        <v-btn type="submit" block class="mt-2"  @click=" getPoll()">Log In</v-btn>
       </v-form>
     </v-sheet>
   </template>
@@ -29,13 +29,16 @@ export default {
         }
     },
     methods:{
-        ...mapActions(["loginUser"]),
+        ...mapActions(["loginUser",'getAllPoll']),
         login(){
             this.loginUser({
                 username:this.username,
                 password:this.password,
             })
-        }
+        },
+        getPoll(){
+        this.getAllPoll();
+      }
     }
 }
 </script>
