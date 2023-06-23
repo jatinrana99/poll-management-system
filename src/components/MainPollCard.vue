@@ -20,7 +20,7 @@
               </v-col>
               <v-row cols="12">
                 <v-text-field label="Options" required v-model="option"></v-text-field>
-                <i class="fa-solid fa-circle-plus" v-on:click="addOption()"></i>
+                <i class="fa-solid fa-circle-plus" v-on:click="addOption()" id="add"></i>
               </v-row>
               <v-col cols="12">
                 <div v-for="item in options" :key="item">
@@ -37,7 +37,7 @@
             Close
           </v-btn>
           <router-link to="/poll">
-          <v-btn color="blue-darken-1" variant="text" @click="dialog = false;addNewPoll() " >
+          <v-btn color="blue-darken-1" variant="text" @click="dialog = true;addNewPoll() " >
             Add
           </v-btn>
         </router-link>
@@ -76,6 +76,16 @@ export default {
       },
       ...mapActions(['addPoll','getAllPoll']),
       addNewPoll(){
+
+        if(this.options.length > 2){
+          this.addPoll({
+          
+          title:this.title,
+          options:this.options,
+          
+        })
+
+        }
         // this.addPoll({
           
         //   title:this.title,
@@ -111,5 +121,6 @@ background-color: cornsilk;
 border-radius: 140px;
 padding: 21px;
 }
+
 
 </style>

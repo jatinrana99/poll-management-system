@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import AboutView from '../views/AboutView.vue'
 // import { mapActions } from 'vuex'
 // import actions from '../store/modules/user'
 // import axios from "axios"
@@ -76,12 +77,15 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    component: HomeView
+    component: HomeView,
+    
   },
   {
     path: '/about',
     name: 'about',
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue'),
+    // component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue'),
+    component:AboutView
+    
   },
   {
     path:'/poll',
@@ -119,7 +123,7 @@ const routes = [
   name: 'Users',
   component: () => import('../components/Users'),
   meta: {auth:true}
-  }
+  },
 ]
 
 const router = createRouter({

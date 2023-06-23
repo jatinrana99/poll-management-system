@@ -5,7 +5,7 @@
         <v-row>
           <section id="title" >    
             <div  @click="toggle(index)">{{ data.title }}</div>
-      <v-text-field
+      <v-text-field class="newTitle"
       v-if="editIndex==index"
         v-model="newTitle"
       ></v-text-field>
@@ -96,6 +96,8 @@ export default {
             obj
         })
 
+        this.newTitle=""
+        this.editIndex=-1
       },
       toggle(index){
         // console.log(index);
@@ -150,7 +152,9 @@ export default {
         this.addPollOption({
           addObj
         })
-                
+            
+        this.newOption="",
+        this.editOption=-1
       },
            
 
@@ -193,7 +197,7 @@ display: flex;
 align-items: center;
 gap: 120px;
 padding: 29px;
-margin-left: 330px;
+margin-left: 326px;
 }
 
 
@@ -202,5 +206,10 @@ margin-left: 330px;
   padding: 15px;
   border-radius: 16px;
 /* border-top-left-radius: 106px; */
+}
+
+
+.newTitle{
+  width: 336px;
 }
 </style>

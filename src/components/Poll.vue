@@ -36,6 +36,7 @@ export default {
     methods:{
         logOut(){
             localStorage.removeItem("status")
+            localStorage.removeItem("user")
             router.push('/')
         }
     }

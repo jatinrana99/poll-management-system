@@ -1,6 +1,6 @@
 <template>
     <v-sheet width="300" class="mx-auto">
-      <v-form fast-fail @submit.prevent="signIn">
+      <v-form fast-fail @submit.prevent="signIn(username,password,role)">
         <v-text-field
           v-model="username"
           label="User Name"
@@ -15,7 +15,7 @@
           v-model="role"
           label="Role"
         ></v-text-field>
-        <v-btn type="submit" block class="mt-2" >Sign In</v-btn>
+        <v-btn  type="submit" block class="mt-2">Sign In</v-btn>
       </v-form>
     </v-sheet>
   </template>
@@ -29,18 +29,29 @@ export default {
         return{
             username:"",
             password:"",
-            role:""
+            role:"",
+            // dialog: false,
+            dialog1: false
         }
     },
     methods:{
         ...mapActions(["addUser"]),
-        signIn(){
+        signIn(username,password,role){
+            this.username = username;
+            this.password = password;
+            this.role = role;
+            
+
+            let signObj={
+              username:this.username,
+              password:this.password,
+              role:this.role
+            }
+
             this.addUser({
-                username : this.username,
-                password : this.password,
-                role: this.role,
+                signObj
             })
-            console.warn("hi",this.username);
+            console.warn("hi",username);
         },
 
     }

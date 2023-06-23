@@ -17,6 +17,7 @@
 
 // import LoginPage from '@/components/LoginPage.vue';
 // import SignInPage from '@/components/SignInPage.vue';
+import { mapActions } from 'vuex';
 import PollCards from '../components/PollCards.vue'
 
 export default {
@@ -25,6 +26,12 @@ export default {
     // LoginPage,
     // SignInPage
     PollCards
+},
+methods:{
+  ...mapActions(["getUsers"]),
+},
+mounted(){
+  this.getUsers()
 }
 }
 </script>

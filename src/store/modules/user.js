@@ -1,11 +1,11 @@
 import axios from "axios"
-import router from "../../router";
+// import router from "../../router";
 const state={
     users:[],
-
+    listUsers:[],
 };
 const getters={
-    getAllUsers: state => state.users,
+    getAllUsers: state => state.listUsers,
     
 
 };
@@ -17,31 +17,36 @@ const actions={
         console.log("Hello from users" , res.data);
     },
 
-    async addUser({commit},payload){
-        const res = await axios.post(`http://65.108.77.50:3031/add_user?username=${payload.username}&password=${payload.password}&role=${payload.role}`,payload.users);
+    async addUser({commit},signObj){
+        console.log(`http://65.108.77.50:3031/add_user?username=${signObj.signObj.username}&password=${signObj.signObj.password}&role=${signObj.signObj.role}`,signObj.users)
+        const res = await axios.post(`http://65.108.77.50:3031/add_user?username=${signObj.signObj.username}&password=${signObj.signObj.password}&role=${signObj.signObj.role}`,signObj.users);
         commit ("newUser" ,res.data);
         console.warn("Hello from added user" , res.data);
     },
 
-    async loginUser({commit},loginDetails){
-        const res = await axios.post(`http://65.108.77.50:3031/login?username=${loginDetails.username}&password=${loginDetails.password}`);
+    async loginUser({commit},loginObj){
+        // console.log("Hello from login user" ,`http://65.108.77.50:3031/login?username=${loginObj.loginObj.username}&password=${loginObj.loginObj.password}` );
+        const res = await axios.post(`http://65.108.77.50:3031/login?username=${loginObj.loginObj.username}&password=${loginObj.loginObj.password}`);
         // const rest = res.data
         commit("userLogin" , res.data);
-        console.log("Hello from login", res.data.token);
+        console.log("Hello from login", res.data);
         localStorage.setItem("status",res.data.token);
+        console.log("Hello from loginUser", loginObj.data);
+
         // router.push('/poll');
-        if(loginDetails.username=="admin" && loginDetails.password=="admin"){
-            router.push('/poll');
-        }
-        else{
-            router.push('/pollUser');
-        }
+
+        // if(loginObj.loginObj.role == "admin"){
+        //     router.push('/poll');
+        // }
+        // else if (loginObj.loginObj.role == "user"){
+        //     router.push('/pollUser');
+        // }
     },
 
 
 };
 const mutations={
-    setUsers:(state,users) => (state.users = users),
+    setUsers:(state,listUsers) => (state.listUsers = listUsers),
     newUser:(state,users) => state.users.push(users)
 };
 

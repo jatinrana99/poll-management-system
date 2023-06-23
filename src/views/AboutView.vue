@@ -6,6 +6,12 @@ The Buccaneers have won two Super Bowl championships and, along with the Baltimo
   </div>
 </template>
 
+<script>
+export default {
+  name:`AboutView`
+}
+</script>
+
 <style scoped>
 .about{
   color: white;

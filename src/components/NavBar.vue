@@ -5,8 +5,9 @@
   <div id="left"><img src="../assets/Tampa_Bay_Buccaneers_logo_red.png" alt="">
   <router-link to="/" class="link">Home</router-link>
   <router-link to="/about" class="link">About</router-link>
-  <router-link to="/poll" class ="link">Poll</router-link>
-  <!-- <v-btn class="bPoll" v-bind="props"  v-on:click="logOut()">
+  <router-link  to="/poll" class ="link" v-if= "role == admin" >Poll</router-link>
+  <router-link to="/pollUser" class="link" v-else>Poll</router-link>
+  <!-- <v-btn class="bPoll" v-on:click="check()">
   LogOut
     </v-btn> -->
 </div>
@@ -62,6 +63,7 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex';
 import LoginPage from './LoginPage.vue';
 import SignInPage from './SignInPage.vue';
 // import router from "../router/index";
@@ -71,6 +73,8 @@ export default {
   name: `NavBar`,
   data(){
     return{
+      user:"user",
+      role:localStorage.getItem("role")
     }
   },
   components:{
@@ -78,15 +82,32 @@ export default {
     SignInPage
 },
   props: {
+
   },
 
-
+  computed:mapGetters(['getAllUsers']),
   methods:{
-  
-// logOut(){
-//             localStorage.removeItem("status")
-//             router.push('/')
-//         }
+    ...mapActions(['getAllPoll']),
+
+    // check(){
+    //   console.log(this.role);
+      // for (let index = 0; index < this.getAllUsers.data.length; index++) {
+      //          console.log(this.getAllUsers.data[0].role , "password");
+      //         //  const element = this.getAllUsers.data[index];
+      //          console.log(this.username,this.password);
+      //         if(this.getAllUsers.data[index].username==this.username && this.getAllUsers.data[index].password==this.password) {
+      //             let role= this.getAllUsers.data.role;
+      //           console.log("role.....",this.getAllUsers.data.role);
+      //             console.log(role);
+      //             if(role=="admin") {
+      //               router.push({path:'/poll',});
+      //             } 
+      //             if(role=="user"){
+      //               router.push({path:'/pollUser'});
+      //             } 
+      //        }
+      //     }
+    // }
   }
 }
 </script>
