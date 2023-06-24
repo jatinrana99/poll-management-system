@@ -29,7 +29,7 @@
               </v-col>
             </v-row>
           </v-container>
-          <small>*For poll aleast Two options are mandatory</small>
+          <small>{{ err }}</small>
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
@@ -66,7 +66,8 @@ export default {
         dialog: false,
         option: "",
         options:[],
-        title:""
+        title:"",
+        err:"",
       }
     },
     methods:{
@@ -77,13 +78,16 @@ export default {
       ...mapActions(['addPoll','getAllPoll']),
       addNewPoll(){
 
-        if(this.options.length > 2){
+        if(this.options.length > 1){
           this.addPoll({
+            
+            title:this.title,
+            options:this.options,
+            
+          })
           
-          title:this.title,
-          options:this.options,
-          
-        })
+        } else {
+          this.err="*For poll aleast Two options are mandatory."
 
         }
         // this.addPoll({

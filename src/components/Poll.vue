@@ -17,8 +17,8 @@
 <script>
 import MainPollCard from './MainPollCard.vue'
 import PollCards from './PollCards.vue'
-// import Users from './Users.vue'
 import router from "../router/index";
+import { mapActions } from 'vuex';
 
 export default {
     name:`Poll`,
@@ -36,9 +36,14 @@ export default {
     methods:{
         logOut(){
             localStorage.removeItem("status")
-            localStorage.removeItem("user")
+            localStorage.removeItem("role")
             router.push('/')
-        }
+        },
+    ...mapActions(['getAllPoll']),
+
+    },
+    mounted(){
+        this.getAllPoll();
     }
 }
 </script>

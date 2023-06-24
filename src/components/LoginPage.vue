@@ -1,6 +1,6 @@
 <template>
     <v-sheet width="300" class="mx-auto">
-      <v-form fast-fail @submit.prevent="login(username,password,role)">
+      <v-form fast-fail @submit.prevent="login(username,password)">
         <v-text-field
           v-model="username"
           label="User Name"
@@ -11,7 +11,7 @@
           label="password"
         ></v-text-field>
 
-        <v-btn type="submit" block class="mt-2"  @click=" getPoll()">Log In</v-btn>
+        <v-btn type="submit" block class="mt-2">Log In</v-btn>
       </v-form>
     </v-sheet>
   </template>
@@ -72,10 +72,6 @@ export default {
           this.password=""
                     // this.role=""
         },
-
-        getPoll(){
-        this.getAllPoll();
-      }
     }
 }
 </script>

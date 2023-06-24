@@ -41,12 +41,15 @@ export default {
     methods:{
         ...mapActions(['getAllPoll']),
         getPoll(){
-        this.getAllPoll();
+        
       },
         logOut(){
             localStorage.removeItem("status")
             router.push('/')
         }
+    },
+    mounted(){
+      this.getAllPoll();
     }
 
 }

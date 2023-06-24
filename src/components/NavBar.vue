@@ -23,12 +23,13 @@
      
           <v-btn variant="text"
           v-bind="props">
-          Login
+          Sign In
        </v-btn>
         </template>
         <template v-slot:default="{ isActive }">
           <v-card>
-    <LoginPage @click="isActive.value = true"></LoginPage>
+    <!-- <LoginPage @click="isActive.value = true"></LoginPage> -->
+    <SignInPage ST="True" @click="isActive.value = true"></SignInPage>
           </v-card>
         </template>
       </v-dialog>
@@ -42,12 +43,12 @@
         <template v-slot:activator="{ props }">
           <v-btn variant="text"
           v-bind="props">
-          Sign In
+          Login 
        </v-btn>
         </template>
         <template v-slot:default="{ isActive }">
           <v-card>
-    <SignInPage @click="isActive.value = true"></SignInPage>
+    <SignInPage LT="True" @click="isActive.value = true"></SignInPage>
           </v-card>
         </template>
       </v-dialog>
@@ -64,7 +65,7 @@
 
 <script>
 import { mapActions, mapGetters } from 'vuex';
-import LoginPage from './LoginPage.vue';
+// import LoginPage from './LoginPage.vue';
 import SignInPage from './SignInPage.vue';
 // import router from "../router/index";
 
@@ -74,11 +75,12 @@ export default {
   data(){
     return{
       user:"user",
-      role:localStorage.getItem("role")
+      role:localStorage.getItem("role"),
+      
     }
   },
   components:{
-    LoginPage,
+    // LoginPage,
     SignInPage
 },
   props: {
